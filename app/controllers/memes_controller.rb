@@ -14,12 +14,12 @@ class MemesController < ApplicationController
 
   # POST /memes
   def create
-    @meme = Meme.new(meme_params)
+    meme = Meme.new(meme_params)
 
-    if @meme.save
-      render json: @meme, status: :created, location: @meme
+    if meme.save
+      render json: meme.instance_to_json
     else
-      render json: @meme.errors, status: :unprocessable_entity
+      render json: meme.errors, status: :unprocessable_entity
     end
   end
 

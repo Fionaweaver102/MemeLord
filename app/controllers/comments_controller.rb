@@ -14,12 +14,14 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    comment = Comment.new(comment_params)
+    meme = Meme.find_or_create_by(id: params[:meme_id])
+    comment.meme_id = meme.id
 
-    if @comment.save
-      render json: @comment, status: :created, location: @comment
+    if comment.save
+      render json: comment.instance_to_json
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: comment.errors, status: :unprocessable_entity
     end
   end
 
