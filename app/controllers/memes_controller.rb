@@ -3,9 +3,8 @@ class MemesController < ApplicationController
 
   # GET /memes
   def index
-    @memes = Meme.all
-
-    render json: @memes
+    memes = Meme.all
+    render json: Meme.arr_to_json
   end
 
   # GET /memes/1
