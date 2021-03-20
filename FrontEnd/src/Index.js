@@ -2,6 +2,7 @@ const endPoint = "http://localhost:3000/memes"
 
 const memes = [];
 
+
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -20,7 +21,7 @@ function append(memes) {
 
   for (let i = 0; i < memes.length; i++) {
     let meme = memes[i];
-    let img = document.createElement('img');
+    let img = make('img');
     img.src = meme.image_url;
     let p = document.createElement("p");
     p.setAttribute('class', 'text-lg leading-6 font-medium text-gray-900 px-4 py-5 sm:px-6');
@@ -39,6 +40,8 @@ function createList(ul, img, p, meme) {
   ul.append(li);
 }
 
-// function make(element) {
-//   return document.createElement(element)
-// }
+function make(element) {
+  return document.createElement(element)
+}
+
+
