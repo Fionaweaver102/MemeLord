@@ -1,6 +1,8 @@
 const endPoint = "http://localhost:3000/memes"
 const memeForm = document.getElementById("memeForm")
-window.addEventListener("click", () => Meme.renderEmptyForm())
+const button = document.getElementById("createButton")
+button.addEventListener("click", () => Meme.renderEmptyForm())
+
 
 // const form = document.getElementById("form")
 // const memes = [];

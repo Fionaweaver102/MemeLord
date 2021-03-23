@@ -9,30 +9,27 @@ class Meme {
   }
 
   static append(memes) {
+    memes.forEach(p => {
+      this.putMemeOnDom(p)
+    })
+  }
+
+  static putMemeOnDom(meme) {
     let ul = document.createElement('ul');
     ul.setAttribute('id', 'meme-list');
     document.getElementById('render-list').appendChild(ul);
-
-    for (let i = 0; i < memes.length; i++) {
-      let meme = memes[i];
-      let img = make('img');
-      img.src = meme.image_url;
-      let p = document.createElement("p");
-      p.setAttribute('class', 'text-lg leading-6 font-medium text-gray-900 px-4 py-5 sm:px-6');
-      p.innerText = meme.title;
-
-      this.createList(ul, img, p, meme);
-    }
-  }
-
-  static createList(ul, img, p, meme) {
     let li = document.createElement("li");
+
+    let img = make('img');
+    img.src = meme.image_url;
+    let p = document.createElement("p");
+    p.setAttribute('class', 'text-lg leading-6 font-medium text-gray-900 px-4 py-5 sm:px-6');
+    p.innerText = meme.title;
 
     li.setAttribute('class', 'bg-white shadow overflow-hidden sm:rounded-lg mt-8');
     li.append(img);
     li.append(p);
     ul.append(li);
-
   }
 
   static make(element) {
@@ -67,7 +64,6 @@ class Meme {
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <input type="submit"
               class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Save
           </div>
 
         </div>

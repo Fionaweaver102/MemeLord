@@ -1,6 +1,8 @@
 class ApiService {
 
   static getMemes() {
+    const button = document.getElementById("createButton")
+    button.addEventListener("click", Meme.renderEmptyForm)
     document.getElementById('render-list').innerHTML = '';
     fetch(endPoint)
       .then(response => response.json())
@@ -25,9 +27,9 @@ class ApiService {
       body: JSON.stringify(memeInfo)
     })
       .then(r => r.json())
-    // .then(e => {
-    //   const meme = new Meme(e.title, e.image_url);
-    //   Meme.append(meme)
-    // })
+      .then(e => {
+        const meme = new Meme(e.title, e.image_url);
+        Meme.putMemeOnDom(meme);
+      })
   }
 }
