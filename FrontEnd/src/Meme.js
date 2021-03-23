@@ -18,7 +18,7 @@ class Meme {
     let ul = document.createElement('ul');
     ul.setAttribute('id', 'meme-list');
     document.getElementById('render-list').appendChild(ul);
-    let li = document.createElement("li");
+    let li = make("li");
 
     let img = make('img');
     img.src = meme.image_url;
@@ -26,14 +26,44 @@ class Meme {
     p.setAttribute('class', 'text-lg leading-6 font-medium text-gray-900 px-4 py-5 sm:px-6');
     p.innerText = meme.title;
 
+    let commentForm = document.querySelector('#comment-form').cloneNode(true);
+    commentForm.setAttribute('id', "comment-form-" + meme.id);
+    commentForm.setAttribute('class', '');
+
     li.setAttribute('class', 'bg-white shadow overflow-hidden sm:rounded-lg mt-8');
     li.append(img);
     li.append(p);
+    li.append(this.getCommentsElem(meme.comments));
+    li.append(commentForm);
     ul.append(li);
+
+    document.getElementById("comment-form-" + meme.id).addEventListener("submit", function (e) {
+      e.preventDefault();
+      let form = Comment.serialize(e.target)
+      let comment = new Comment(form.content, meme.id);
+      comment.post();
+      setTimeout(() => {
+        init();
+      }, 500)
+    })
   }
 
   static make(element) {
     return document.createElement(element)
+  }
+
+  static getCommentsElem(comments) {
+    let container = document.createElement("div");
+    container.setAttribute("class", "comments-container");
+    for (let i = 0; i < comments.length; i++) {
+      let comment = comments[i];
+      let elem = document.createElement("div");
+
+      elem.innerHTML = comment.content;
+      container.append(elem);
+    }
+
+    return container;
   }
 
   static renderEmptyForm() {
