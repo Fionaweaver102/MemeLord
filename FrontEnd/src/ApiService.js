@@ -1,8 +1,7 @@
 class ApiService {
 
+
   static getMemes() {
-    // const button = document.getElementById("createButton")
-    // button.addEventListener("click", Meme.renderEmptyForm)
     document.getElementById('render-list').innerHTML = '';
     fetch(endPoint)
       .then(response => response.json())
@@ -33,32 +32,7 @@ class ApiService {
       })
   }
 
-  // static post(e) {
-
-  //   const params = {
-  //     content: e.target[1].value,
-  //   };
-
-  //   fetch(endPoint, {
-  //     method: "POST",
-  //     headers: {
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //     body: JSON.stringify(params)
-  //   })
-  //     .then(r => r.json())
-  //     .then(e => {
-  //       let form = e.target[0].value;
-  //       Meme.putMemeOnDom(form)
-  //       let comment = new Comment(form.content, meme.id);
-  //       this.putCommentsOnDom(comment)
-  //     })
-  // })
 
 }
-  // .then(e => {
-  //   let form = e.target[0].value
-  //   let comment = new Comment(form.content, meme.id);
-  //   this.putCommentsOnDom(comment)
-  // })
+
 

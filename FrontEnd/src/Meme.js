@@ -12,7 +12,6 @@ class Meme {
   static append(memes) {
     memes.forEach(p => {
       this.putMemeOnDom(p);
-      // Comment.putCommentsOnDom(p)
     })
   }
 
@@ -50,16 +49,6 @@ class Meme {
         init();
       }, 5)
     })
-    // document.getElementById("comment-form-" + meme.id).addEventListener("submit", function (e) {
-
-    //   const form = e.target[0].value;
-    //   meme.comments.push(form);
-    //   console.log(meme.comments)
-
-    //   e.preventDefault();
-
-    //   // meme.comments.push(form);
-    // })
   }
 
   static getCommentsElem(comments) {
@@ -76,7 +65,4 @@ class Meme {
 
     return container;
   }
-
-
-
 }
