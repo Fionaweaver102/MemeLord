@@ -40,47 +40,27 @@ class Meme {
     ul.append(li);
 
     document.getElementById("comment-form-" + meme.id).addEventListener("submit", function (e) {
-      e.preventDefault();
 
-      const form = e.target[0].value;
+      let form = Comment.serialize(e.target)
+      let comment = new Comment(form.content, meme.id);
+      console.log(comment)
+      comment.postComment();
 
-      fetch(endPoint, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify(form)
-      })
-        .then(r => r.json())
-        .catch(error => {
-          console.log(error.message)
-        })
+      setTimeout(() => {
+        init();
+      }, 5)
     })
+    // document.getElementById("comment-form-" + meme.id).addEventListener("submit", function (e) {
 
-    // meme.comments.push(form);
+    //   const form = e.target[0].value;
+    //   meme.comments.push(form);
+    //   console.log(meme.comments)
+
+    //   e.preventDefault();
+
+    //   // meme.comments.push(form);
+    // })
   }
-
-  // post(e) {
-
-  //   const params = {
-  //     content: e.target[0].value,
-  //   };
-
-  //   fetch(endPoint, {
-  //     method: "POST",
-  //     headers: {
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //     body: JSON.stringify(params)
-  //   })
-  //     .then(r => r.json())
-  //   // .then(e => {
-  //   //   let form = e.target[0].value
-  //   //   let comment = new Comment(form.content, meme.id);
-  //   //   this.putCommentsOnDom(comment)
-  //   // })
-  // }
-
 
   static getCommentsElem(comments) {
     let container = document.createElement("div");

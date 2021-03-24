@@ -34,7 +34,7 @@ class ApiService {
   }
 
   // static post(e) {
-  //   console.log(e)
+
   //   const params = {
   //     content: e.target[1].value,
   //   };
@@ -47,34 +47,18 @@ class ApiService {
   //     body: JSON.stringify(params)
   //   })
   //     .then(r => r.json())
+  //     .then(e => {
+  //       let form = e.target[0].value;
+  //       Meme.putMemeOnDom(form)
+  //       let comment = new Comment(form.content, meme.id);
+  //       this.putCommentsOnDom(comment)
+  //     })
+  // })
+
+}
   // .then(e => {
-  //   let form = e.target[0].value;
-  //   Meme.putMemeOnDom(form)
+  //   let form = e.target[0].value
   //   let comment = new Comment(form.content, meme.id);
   //   this.putCommentsOnDom(comment)
   // })
-  // })
-}
 
-  // post() {
-
-  //   const params = {
-  //     content: this.content,
-  //     meme_id: this.memeId
-  //   };
-
-  //   fetch(endPoint, {
-  //     method: "POST",
-  //     headers: {
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //     body: JSON.stringify(params)
-  //   })
-  //     .then(r => r.json())
-  //   // .then(e => {
-  //   //   let form = e.target[0].value
-  //   //   let comment = new Comment(form.content, meme.id);
-  //   //   this.putCommentsOnDom(comment)
-  //   // })
-  // }
-}

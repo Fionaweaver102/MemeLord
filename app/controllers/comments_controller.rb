@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
   def index
@@ -7,8 +6,6 @@ class CommentsController < ApplicationController
     render json: Comment.arr_to_json
   end
 
-
-  # POST /comments
   def create
     comment = Comment.new(comment_params)
     meme = Meme.find_or_create_by(id: params[:meme_id])
