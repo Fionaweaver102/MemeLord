@@ -41,8 +41,13 @@ function renderEmptyForm() {
   </div>
 </div>`
 
-  const form = document.getElementById("form")
-  form.addEventListener("submit", ApiService.postMeme)
+  const form = document.getElementById("form");
+  form.addEventListener("submit", ApiService.postMeme);
+  form.addEventListener("submit", hideForm)
+}
+
+function hideForm() {
+  memeForm.innerHTML = ``;
 }
 
 
