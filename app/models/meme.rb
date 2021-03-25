@@ -12,6 +12,7 @@ class Meme < ApplicationRecord
       id: self.id,
       title: self.title,
       image_url: self.image_url,
+      created_at: self.created_at,
       comments: self.comments
     }
   end 

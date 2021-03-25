@@ -10,7 +10,6 @@ function init() {
   ApiService.getMemes();
 }
 
-
 function renderEmptyForm() {
   memeForm.innerHTML =
     `<div class="container m-auto">
@@ -49,8 +48,6 @@ function renderEmptyForm() {
 function hideForm() {
   memeForm.innerHTML = ``;
 }
-
-
 
 function make(element) {
   return document.createElement(element)

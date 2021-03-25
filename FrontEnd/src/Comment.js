@@ -9,7 +9,7 @@ class Comment {
   postComment() {
     let params = {
       meme_id: this.memeId,
-      content: this.content
+      content: this.content,
     };
     fetch(this.url, {
       method: "POST",
@@ -26,9 +26,6 @@ class Comment {
           throw Error(body);
         }
       })
-      .then(console.log)
-      .catch(console.error);
-
   }
 
   static serialize(form) {

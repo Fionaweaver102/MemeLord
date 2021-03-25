@@ -38,16 +38,14 @@ class Meme {
     li.append(commentForm);
     ul.append(li);
 
-    document.getElementById("comment-form-" + meme.id).addEventListener("submit", function (e) {
-
+    document.querySelector("#comment-form-" + meme.id).addEventListener("submit", function (e) {
+      e.preventDefault();
       let form = Comment.serialize(e.target)
       let comment = new Comment(form.content, meme.id);
-      console.log(comment)
       comment.postComment();
-
       setTimeout(() => {
         init();
-      }, 5)
+      }, 0)
     })
   }
 

@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    comments = Comment.all
+    comments = Comment.all 
+    
     render json: Comment.arr_to_json
   end
 
