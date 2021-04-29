@@ -16,6 +16,7 @@ class Meme {
   }
 
   static putMemeOnDom(meme) {
+    let numOfLikes = 0
     let ul = document.createElement('ul');
     ul.setAttribute('id', 'meme-list');
     document.getElementById('render-list').appendChild(ul);
@@ -27,6 +28,10 @@ class Meme {
     p.setAttribute('class', 'text-lg leading-6 font-medium text-gray-900 px-4 py-5 sm:px-6');
     p.innerText = meme.title;
 
+    let likes = make('button');
+    likes.setAttribute('id', `like-button-${meme.id}`);
+    likes.innerText = `Like ${numOfLikes}`;
+
     let commentForm = document.querySelector('#comment-form').cloneNode(true);
     commentForm.setAttribute('id', "comment-form-" + meme.id);
     commentForm.setAttribute('class', '');
@@ -34,18 +39,21 @@ class Meme {
     li.setAttribute('class', 'bg-white shadow overflow-hidden sm:rounded-lg mt-8');
     li.append(img);
     li.append(p);
+    li.append(likes);
     li.append(this.getCommentsElem(meme.comments));
     li.append(commentForm);
     ul.append(li);
 
     document.querySelector("#comment-form-" + meme.id).addEventListener("submit", function (e) {
-      e.preventDefault();
       let form = Comment.serialize(e.target)
       let comment = new Comment(form.content, meme.id);
+      e.preventDefault();
       comment.postComment();
-      setTimeout(() => {
-        init();
-      }, 0)
+    })
+
+    document.getElementById('like-button-' + meme.id).addEventListener("click", function () {
+      numOfLikes++;
+      likes.innerText = `Like ${numOfLikes}`
     })
   }
 
@@ -63,4 +71,6 @@ class Meme {
 
     return container;
   }
+
+
 }

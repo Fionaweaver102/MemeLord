@@ -1,7 +1,8 @@
-const endPoint = "http://localhost:3000/memes"
-const memeForm = document.getElementById("memeForm")
-const button = document.getElementById("createButton")
-button.addEventListener("click", () => renderEmptyForm())
+const endPoint = "http://localhost:3000/memes";
+const memeForm = document.getElementById("memeForm");
+const button = document.getElementById("createButton");
+button.addEventListener("click", () => renderEmptyForm());
+
 
 
 document.addEventListener("DOMContentLoaded", init);

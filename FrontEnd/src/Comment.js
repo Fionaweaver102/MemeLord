@@ -7,6 +7,8 @@ class Comment {
   }
 
   postComment() {
+    // Event.preventDefault()
+
     let params = {
       meme_id: this.memeId,
       content: this.content
@@ -18,7 +20,8 @@ class Comment {
       },
       body: JSON.stringify(params)
     })
-      .then(res => res.text())
+      .then(res =>
+        res.text())
       .then(body => {
         try {
           return JSON.parse(body);
@@ -26,7 +29,21 @@ class Comment {
           throw Error(body);
         }
       })
+    // .then(body => {
+    //   this.putCommentOnDom(body)
+    // })
   }
+
+  // putCommentOnDom(comment) {
+  //   let container = document.createElement("div");
+  //   container.setAttribute("class", "comments-container");
+
+  //   let elem = document.createElement("div");
+  //   elem.innerHTML = comment.content;
+  //   container.append(elem);
+
+  //   return container;
+  // }
 
   static serialize(form) {
     let obj = {};
