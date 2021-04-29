@@ -45,10 +45,13 @@ class Meme {
     ul.append(li);
 
     document.querySelector("#comment-form-" + meme.id).addEventListener("submit", function (e) {
+      e.preventDefault();
       let form = Comment.serialize(e.target)
       let comment = new Comment(form.content, meme.id);
-      e.preventDefault();
       comment.postComment();
+      setTimeout(() => {
+        init();
+      }, 0)
     })
 
     document.getElementById('like-button-' + meme.id).addEventListener("click", function () {
